@@ -1,0 +1,47 @@
+{# Plantilla de la aplicacion #}
+{% extends 'base.html.twig' %}
+{# Titulo #}
+{% block title %}Fixture
+{% endblock %}
+{# Plantilla contenido #}
+{% block body %}
+<div class="container">
+    <h1 class="mt-4 mb-3">Fixture</h1>
+    <div class="row">
+        <div class="col-nd 8">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Points</th>
+                    <th scope="col">Matches played</th>
+                    <th scope="col">Matches won</th>
+                    <th scope="col">Matches lost</th>
+                    <th scope="col">Matches tied</th>
+                    <th scope="col">Goals scored</th>
+                    <th scope="col">Goals against</th>
+                    <th scope="col">Difference</th>
+                    <tr>
+                </thead>
+                <tbody>
+                    {% for array.fixture in fixtures %}
+                    <tr>
+                    <td>{{Rank}}</td>
+                    <td>{{array.fixture.team}}</td>
+                    <td>{{array.fixture.points}}</td>
+                    <td>{{array.fixture.matches_played}}</td>
+                    <td>{{array.fixture.matches_won}}</td>
+                    <td>{{array.fixture.matches_lost}}</td>
+                    <td>{{array.fixture.matches_tied}}</td>
+                    <td>{{array.fixture.goals_scored}}</td>
+                    <td>{{array.fixture.goals_against}}</td>
+                    <td>{{array.fixture.difference}}</td>
+                   {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

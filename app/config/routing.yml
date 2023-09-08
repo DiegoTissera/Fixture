@@ -1,0 +1,40 @@
+homepage:
+    path: /
+    defaults: { _controller: AppBundle:Default:index}
+
+fixture:
+    path: /fixture
+    defaults: { _controller: AppBundle:MatchSoccer:fixture}
+
+newMatch:
+    path: /match/new
+    defaults: { _controller: AppBundle:MatchSoccer:new}
+
+match:
+    path: /match
+    defaults: { _controller: AppBundle:MatchSoccer:match}
+
+editMatch:
+    path: /match/edit/{id}
+    defaults: { _controller: AppBundle:MatchSoccer:edit}
+
+deleteMatch:
+    path: /match/delete/{id}
+    defaults: { _controller: AppBundle:MatchSoccer:deleteMatch}
+
+
+newTeam:
+    path: /team/new
+    defaults: { _controller: AppBundle:Team:new}
+
+team:
+    path: /team
+    defaults: { _controller: AppBundle:Team:team}
+
+editTeam:
+    path: /team/edit/{id}
+    defaults: { _controller: AppBundle:Team:edit}
+
+deleteTeam:
+    path: /team/delete/{id}
+    defaults: { _controller: AppBundle:Team:delete}

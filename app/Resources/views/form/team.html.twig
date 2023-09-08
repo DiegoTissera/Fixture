@@ -1,0 +1,33 @@
+{# Plantilla de la aplicacion #}
+{% extends 'base.html.twig' %}
+{# Titulo #}
+{% block title %}Team
+{% endblock %}
+{# Plantilla contenido #}
+{% block body %}
+<div class="container">
+    <h1 class="mt-4 mb-3">Teams</h1>
+    <div class="row">
+        <div class="col-nd 8">
+        <button><a href="{{path('newTeam')}}">New</a></button>
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Delete</th>
+                    <tr>
+                </thead>
+                <tbody>
+                    {% for team in team%}
+                    <tr>
+                    <td>{{team.name}}</td>
+                    <th scope="row"><a href="{{path('editTeam' ,{'id':team.id})}}">Edit</a></th>
+                    <th scope="row"><a href="{{path('deleteTeam' ,{'id':team.id})}}">Delete</a></th>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

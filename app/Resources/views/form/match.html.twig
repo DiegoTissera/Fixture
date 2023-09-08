@@ -1,0 +1,42 @@
+{# Plantilla de la aplicacion #}
+{% extends 'base.html.twig' %}
+{# Titulo #}
+{% block title %}Matches
+{% endblock %}
+{# Plantilla contenido #}
+{% block body %}
+<div class="container">
+    <h1 class="mt-4 mb-3">Matches</h1>
+    <div class="row">
+        <div class="col-nd 8">
+        <button><a href="{{path('newMatch')}}">New</a></button>
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Home</th>
+                    <th scope="col">Visitor</th>
+                    <th scope="col">Home Goals</th>
+                    <th scope="col">Visitor Goals</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                    <tr>
+                </thead>
+                <tbody>
+                    {% for match in match %}
+                    <tr>
+                    <td>{{match.datetime|date('Y/m/d h:i:s')}}</td>
+                    <td>{{match.home.name}}</td>
+                    <td>{{match.visitor.name}}</td>
+                    <td>{{match.homegoals}}</td>
+                    <td>{{match.visitorgoals}}</td>
+                    <th scope="row"><a href="{{path('editMatch' ,{'id':match.id})}}">Edit</a></th>
+                    <th scope="row"><a href="{{path('deleteMatch' ,{'id':match.id})}}">Delete</a></th>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
