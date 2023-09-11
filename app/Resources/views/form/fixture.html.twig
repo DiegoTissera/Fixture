@@ -12,7 +12,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                    <th scope="col">Rank</th>
                     <th scope="col">Team</th>
                     <th scope="col">Points</th>
                     <th scope="col">Matches played</th>
@@ -25,18 +24,17 @@
                     <tr>
                 </thead>
                 <tbody>
-                    {% for array.fixture in fixtures %}
+                    {% for fixture in fixture %}
                     <tr>
-                    <td>{{Rank}}</td>
-                    <td>{{array.fixture.team}}</td>
-                    <td>{{array.fixture.points}}</td>
-                    <td>{{array.fixture.matches_played}}</td>
-                    <td>{{array.fixture.matches_won}}</td>
-                    <td>{{array.fixture.matches_lost}}</td>
-                    <td>{{array.fixture.matches_tied}}</td>
-                    <td>{{array.fixture.goals_scored}}</td>
-                    <td>{{array.fixture.goals_against}}</td>
-                    <td>{{array.fixture.difference}}</td>
+                    <td>{{fixture.name}}</td>
+                    <td>{{fixture.points}}</td>
+                    <td>{{fixture.matches_played}}</td>
+                    <td>{{fixture.matches_won}}</td>
+                    <td>{{fixture.matches_lost}}</td>
+                    <td>{{fixture.matches_drawn}}</td>
+                    <td>{{fixture.goals_scored}}</td>
+                    <td>{{fixture.goals_against}}</td>
+                    <td>{{fixture.goal_difference}}</td>
                    {% endfor %}
                 </tbody>
             </table>

@@ -21,6 +21,8 @@ class MatchSoccerController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             if ($this->isDuplicateMatch($match)) {
                 $this->addFlash('error', 'Los datos del partido ya existen.');
+            } elseif ($this->isSameTeam($match)) {
+                $this->addFlash('error', 'No puedes seleccionar al mismo equipo como local y visitante.');
             } else {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($match);
@@ -34,6 +36,12 @@ class MatchSoccerController extends Controller
             (['form' => $form->createView()])
         );
     }
+
+     private function isSameTeam(MatchSoccer $match)
+    {
+        return $match->getHome() === $match->getVisitor();
+    }
+
     private function isDuplicateMatch(MatchSoccer $match)
     {
         $existingMatch = $this->getDoctrine()->getRepository(MatchSoccer::class)->findOneBy([
@@ -97,9 +105,19 @@ class MatchSoccerController extends Controller
         return $this->redirectToRoute('match');
     }
 
+    // public function fixtureAction(Request $request)
+    // {
+    //     // replace this example code with whatever you need
+    //     return $this->render('form/fixture.html.twig', ['fixtures' => $fixtures]);
+    // }
+
     public function fixtureAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('form/fixture.html.twig', ['fixtures' => $fixtures]);
+        $fixture = $this->getDoctrine()->getManager()->getRepository('AppBundle:MatchSoccer')->positionFixture();
+
+
+        return $this->render('form/fixture.html.twig',
+            ['fixture' => $fixture,]
+        );
     }
 }
