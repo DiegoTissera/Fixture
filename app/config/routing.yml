@@ -37,4 +37,4 @@ editTeam:
 
 deleteTeam:
     path: /team/delete/{id}
-    defaults: { _controller: AppBundle:Team:delete}
+    defaults: { _controller: AppBundle:Team:deleteTeam}

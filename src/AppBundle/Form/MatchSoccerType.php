@@ -20,11 +20,19 @@ class MatchSoccerType extends AbstractType
 	public function buildform(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('datetime', DateTimeType::class, [
-				'data' => new \DateTime()
-			]
-		)
+
+		// 	->add('datetime', DateTimeType::class, [
+		// 		'data' => new \DateTime()
+		// 	]
+		// )
+			->add("datetime", DateTimeType::class,[
+                'widget'        => "choice",
+                'format'        => "yyyy-MM-dd HH:mm:ss",
+                ]
+            )
+
 			->add('home', EntityType::class, [
+				'disabled'      => $builder->getData() && $builder->getData()->getId(),
 			    'class' => 'AppBundle\Entity\Team',
 			    'choice_label' => 'Name',
 			    'placeholder' => 'select option',
@@ -34,6 +42,7 @@ class MatchSoccerType extends AbstractType
 			    },
 			])
 			->add('visitor', EntityType::class, [
+				'disabled'      => $builder->getData() && $builder->getData()->getId(),
 			    'class' => 'AppBundle\Entity\Team',
 			    'choice_label' => 'Name',
 			    'placeholder' => 'select option',

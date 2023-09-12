@@ -129,11 +129,11 @@ class MatchSoccerRepository extends EntityRepository
                     END
                 ))
             ) AS goal_difference
-        FROM AppBundle\Entity\MatchSoccer ms
-        JOIN AppBundle\Entity\Team t WITH ms.home = t.id OR ms.visitor = t.id
-        GROUP BY t.id
-        ORDER BY points DESC, goals_scored DESC, goals_against ASC, t.name ASC'
-    );
+	        FROM AppBundle\Entity\MatchSoccer ms
+	        JOIN AppBundle\Entity\Team t WITH ms.home = t.id OR ms.visitor = t.id
+	        GROUP BY t.id
+	        ORDER BY points DESC, goal_difference DESC, goals_scored DESC, goals_against ASC'
+    	);
 
 	    return $query->getResult();
 	    $fixture = getResult();

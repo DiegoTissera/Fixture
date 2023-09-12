@@ -31,12 +31,18 @@
                     <td>{{match.homegoals}}</td>
                     <td>{{match.visitorgoals}}</td>
                     <th scope="row"><a href="{{path('editMatch' ,{'id':match.id})}}">Edit</a></th>
-                    <th scope="row"><a href="{{path('deleteMatch' ,{'id':match.id})}}">Delete</a></th>
+                    <th scope="row"><a href="{{path('deleteMatch' ,{'id':match.id})}}" class="delete-link" onClick="return confirmDelete();">Delete</a></th>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
-
     </div>
 </div>
+<script>
+    // Función JavaScript para mostrar la alerta de confirmación
+    function confirmDelete() {
+        return confirm('¿Estás seguro de que deseas eliminar este registro?');
+    }
+</script>
 {% endblock %}
+
